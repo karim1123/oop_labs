@@ -12,8 +12,10 @@ public:
 	EvenNumbers() {
 		int arr[20];
 	}
+	virtual void print() {
+		cout << "Вывод чётных чисел: " << endl;
+	}
 	void meth(int arr[]) {
-		cout << "Вывод  чётных чисел: ";
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] % 2 == 0) {
 				cout << arr[i] << " ";
@@ -22,13 +24,15 @@ public:
 	}
 };
 
-class OddNumbers {
+class OddNumbers : public EvenNumbers {
 public:
 	OddNumbers() {
 		int arr[20];
 	}
+	void print() {
+		cout << "Вывод нечётных чисел: " << endl;
+	}
 	void meth(int arr[]) {
-		cout << "Вывод нечётных чисел: ";
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] % 2 != 0) {
 				cout << arr[i] << " ";
@@ -37,14 +41,17 @@ public:
 	}
 };
 
-class PositiveNumbers {
+class PositiveNumbers : public EvenNumbers {
 public:
 	PositiveNumbers() {
 		int arr[20];
 		string str = "";
 	}
+	void print() {
+		cout << "Вывод положительных чисел: " << endl;
+	}
 	void meth(int arr[]) {
-		cout << "Вывод положительных чисел: ";
+
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] > 0) {
 				cout << arr[i] << " ";
@@ -53,13 +60,15 @@ public:
 	}
 };
 
-class NegativeNumbers {
+class NegativeNumbers : public EvenNumbers {
 public:
 	NegativeNumbers() {
 		int arr[20];
 	}
+	void print() {
+		cout << "Вывод отрицательных чисел: " << endl;
+	}
 	void meth(int arr[]) {
-		cout << "Вывод отрицательных чисел: ";
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] < 0) {
 				cout << arr[i] << " ";
@@ -87,21 +96,25 @@ int main()
 	switch (n) {
 	case 0: {
 		EvenNumbers  evnum;
+		evnum.print();
 		evnum.meth(arr);
 	}
 			break;
 		case 1: {
 			OddNumbers odnum;
+			odnum.print();
 			odnum.meth(arr);
 		}
 			break;
 		case 2: {
 			PositiveNumbers ponum;
+			ponum.print();
 			ponum.meth(arr);
 		}
 			break;
 		case 3: {
 			NegativeNumbers nenum;
+			nenum.print();
 			nenum.meth(arr);
 		}
 			break;
