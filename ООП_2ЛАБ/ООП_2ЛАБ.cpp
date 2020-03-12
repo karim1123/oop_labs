@@ -7,15 +7,22 @@
 
 using namespace std;
 
-class EvenNumbers {
+class Methods {
 public:
-	EvenNumbers() {
-		int arr[20];
+	virtual void meth(int arr[]) {
+		cout << "Вывод чисел: " << endl;
+		for (int i = 0; i < 20; i++) {
+			if (arr[i] != 0) {
+				cout << arr[i] << " ";
+			}
+		}
 	}
-	virtual void print() {
-		cout << "Вывод чётных чисел: " << endl;
-	}
+};
+
+class EvenNumbers : public Methods {
+public:
 	void meth(int arr[]) {
+		cout << "Вывод чётных чисел: " << endl;
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] % 2 == 0) {
 				cout << arr[i] << " ";
@@ -24,15 +31,10 @@ public:
 	}
 };
 
-class OddNumbers : public EvenNumbers {
+class OddNumbers : public Methods {
 public:
-	OddNumbers() {
-		int arr[20];
-	}
-	void print() {
-		cout << "Вывод нечётных чисел: " << endl;
-	}
 	void meth(int arr[]) {
+		cout << "Вывод нечётных чисел: " << endl;
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] % 2 != 0) {
 				cout << arr[i] << " ";
@@ -41,17 +43,10 @@ public:
 	}
 };
 
-class PositiveNumbers : public EvenNumbers {
+class PositiveNumbers : public Methods {
 public:
-	PositiveNumbers() {
-		int arr[20];
-		string str = "";
-	}
-	void print() {
-		cout << "Вывод положительных чисел: " << endl;
-	}
 	void meth(int arr[]) {
-
+		cout << "Вывод положительных чисел: " << endl;
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] > 0) {
 				cout << arr[i] << " ";
@@ -60,15 +55,10 @@ public:
 	}
 };
 
-class NegativeNumbers : public EvenNumbers {
+class NegativeNumbers : public Methods {
 public:
-	NegativeNumbers() {
-		int arr[20];
-	}
-	void print() {
-		cout << "Вывод отрицательных чисел: " << endl;
-	}
 	void meth(int arr[]) {
+		cout << "Вывод отрицательных чисел: " << endl;
 		for (int i = 0; i < 20; i++) {
 			if (arr[i] < 0) {
 				cout << arr[i] << " ";
@@ -96,25 +86,21 @@ int main()
 	switch (n) {
 	case 0: {
 		EvenNumbers  evnum;
-		evnum.print();
 		evnum.meth(arr);
 	}
 			break;
 		case 1: {
 			OddNumbers odnum;
-			odnum.print();
 			odnum.meth(arr);
 		}
 			break;
 		case 2: {
 			PositiveNumbers ponum;
-			ponum.print();
 			ponum.meth(arr);
 		}
 			break;
 		case 3: {
 			NegativeNumbers nenum;
-			nenum.print();
 			nenum.meth(arr);
 		}
 			break;
