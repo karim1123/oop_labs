@@ -17,54 +17,77 @@ public:
 		age = 0;
 	}
 	Person(string n, string ln, string mn, int a) {
-		name = n;
-		last_name = ln;
-		middle_name = mn;
-		age = a;
+		if (n.length() > 20) {
+			cout << "Некоректное имя" << endl;
+		}
+		else {
+			this->name = n;
+		}
+		//////////////////////////////////////////////
+		if (ln.length() > 20) {
+			cout << "Некоректная фамилия" << endl;
+		}
+		else {
+			this->last_name = ln;
+		}
+		//////////////////////////////////////////////
+		if (mn.length() > 20) {
+			cout << "Некоректное отчество" << endl;
+		}
+		else {
+			this->middle_name = mn;
+		}
+		//////////////////////////////////////////////
+		if (a <= 0) {
+			cout << "Некорректный возраст" << endl;
+		}
+		else {
+			this->age = a;
+		}
 	}
 	void set_age(int age) {
-		if (age <= 0) {
-			cout << "Некорректный возраст";
-		}
-		else {
 			this->age = age;
-		}
 	}
 	void set_name(string name) {
-		if (name.length() > 20) {
-			cout << "Некоректное имя";
-		}
-		else {
 			this->name = name;
-		}
 	}
 	void set_last_name(string last_name) {
-		if (last_name.length() > 20) {
-			cout << "Некоректная фамилия";
-		}
-		else {
 			this->last_name = last_name;
-		}
 	}
 	void set_middle_name(string middle_name) {
-		if (middle_name.length() > 20) {
-			cout << "Некоректное отчество";
-		}
-		else {
 			this->middle_name = middle_name;
-		}
 	}
 	int get_age() {
-		return age;
+		if (age > 0) {
+			return age;
+		}
+		else {
+			cout << "Age: некоректный возраст" << endl;
+		}
 	}
 	string get_name() {
-		return name;
+		if (name.length() > 20) {
+			cout << "Name: Некоректное имя" << endl;
+		}
+		else {
+			return name;
+		}
 	}
 	string get_last_name() {
-		return last_name;
+		if (last_name.length() > 20) {
+			cout << "Last Name: Некоректная фамилия" << endl;
+		}
+		else {
+			return last_name;
+		}
 	}
 	string get_middle_name() {
-		return middle_name;
+		if (middle_name.length() > 20) {
+			cout << "Middle Name: Некоректное отчество" << endl;
+		}
+		else {
+			return middle_name;
+		}
 	}
 };
 
@@ -80,6 +103,7 @@ public:
 	Cashbox(Person person) {
 		this->cashier = person;
 		cash_register_number = 0;
+
 	}
 	void set_client(Person client) {
 		if (client.get_name() == cashier.get_name() && client.get_last_name() == cashier.get_last_name() && client.get_middle_name() == cashier.get_middle_name()) {
@@ -96,6 +120,8 @@ public:
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
+
 	Person cashier("Karim", "Gabbasov", "Ramilevich", 19);
 	cout << "Information about cashier:" << endl << endl;
 	cout << "Name:" << cashier.get_name() << endl << "Last name:" << cashier.get_last_name() << endl << "Middle name:" << cashier.get_middle_name() << endl << "Age:" << cashier.get_age() << endl << endl;
